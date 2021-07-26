@@ -1,0 +1,96 @@
+package arrays;
+
+public class DynamicArray {
+
+	private int length;
+	private Object data[];
+
+	public DynamicArray() {
+		length = 0;
+		data = new Object[1];
+	}
+
+	public Object getItemsofArray(int index) {
+		return data[index];
+	}
+
+	public Object addItemsToArray(Object obj) {
+
+		resizeIfFull();
+
+		data[length] = obj;
+		length++;
+
+		return obj;
+	}
+	
+	public void addItemsToIndex(int index, Object obj)
+	{
+		resizeIfFull();
+		
+		for(int i = index; i<length; i++)
+		{
+	System.out.println(i);
+		data[i] = data[i+1];
+		
+		}
+		
+		data[index] = obj;
+		
+		length++;
+	}
+	
+	
+	
+
+	public void resizeIfFull() {
+
+		System.out.println("Data Before " + data.length);
+		System.out.println("Length" + length);
+
+		if (length < data.length) {
+			
+			System.out.println("Returning Data" + length);
+
+			return;
+
+		}
+
+		Object biggerArray[] = new Object[2 * data.length];
+
+		for (int i = 0; i < data.length; i++) {
+			biggerArray[i] = data[i];
+
+		}
+
+		data = biggerArray;
+
+		System.out.println("Data After " + data.length);
+
+		
+	}
+
+	public static void main(String[] args) {
+
+		DynamicArray obj = new DynamicArray();
+
+		obj.addItemsToArray("Hii");
+		obj.addItemsToArray("I");
+		obj.addItemsToArray("am");
+		obj.addItemsToArray("Prachi");
+
+		obj.addItemsToIndex(0, "Holla");
+		
+		
+		
+			System.out.println(obj.getItemsofArray(0));
+		
+
+
+	}
+	
+	
+	
+	
+
+}
